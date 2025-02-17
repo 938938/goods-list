@@ -1,28 +1,27 @@
 'use client';
 
 import { Button, Input } from '@material-tailwind/react';
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
+import { addGoods, getGoodsList } from 'src/actions/item-actions';
 
 const AddItem = () => {
   const [name, setName] = useState<string>('');
   const [cost, setCost] = useState<number>(undefined);
-  const onClickHandler = () => {
-    if (!name.trim()) return;
-    const id = new Date();
+  const listQuery = useQuery({
+    queryKey: ['list'],
+    queryFn: () => getGoodsList(),
+  });
 
-    const newItem = { id, name, cost: cost || 0 };
+  const addGoodsMutation = useMutation({
+    mutationFn: () => addGoods(name, cost),
+    onSuccess: () => {
+      listQuery.refetch();
+      setName('');
+      setCost(undefined);
+    },
+  });
 
-    const existingList = JSON.parse(localStorage.getItem('list') || '[]');
-
-    const updatedList = [...existingList, newItem];
-
-    localStorage.setItem('list', JSON.stringify(updatedList));
-
-    setName('');
-    setCost(undefined);
-
-    window.dispatchEvent(new Event('localStorageUpdated'));
-  };
   return (
     <div>
       <Input
@@ -36,7 +35,12 @@ const AddItem = () => {
         value={cost}
         onChange={(e) => setCost(Number(e.target.value))}
       />
-      <Button onClick={onClickHandler}>추가</Button>
+      <Button
+        onClick={() => addGoodsMutation.mutate()}
+        loading={addGoodsMutation.isPending}
+      >
+        추가
+      </Button>
     </div>
   );
 };

@@ -1,39 +1,25 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { ItemType } from 'src/model/type';
+import { useQuery } from '@tanstack/react-query';
+import { getGoodsList } from 'src/actions/item-actions';
 
 const EditItemList = () => {
-  const [list, setList] = useState<ItemType[]>(() => {
-    if (typeof window === 'undefined') return []; // SSR 방지
-    const storedList = localStorage.getItem('list');
-    return storedList ? JSON.parse(storedList) : [];
+  const listQuery = useQuery({
+    queryKey: ['list'],
+    queryFn: () => getGoodsList(),
   });
-
-  useEffect(() => {
-    const handleStorageChange = () => {
-      const storedList = localStorage.getItem('list');
-      setList(storedList ? JSON.parse(storedList) : []);
-    };
-
-    window.addEventListener('localStorageUpdated', handleStorageChange);
-    return () =>
-      window.removeEventListener('localStorageUpdated', handleStorageChange);
-  }, []);
 
   return (
     <div>
-      {list.length > 0 ? (
-        <ul>
-          {list.map((item, index) => (
+      {listQuery.isPending && <p>Loading...</p>}
+      <ul>
+        {listQuery.data &&
+          listQuery.data.map((item, index) => (
             <li key={index}>
               {item.name} - {item.cost.toLocaleString()}원
             </li>
           ))}
-        </ul>
-      ) : (
-        <p>저장된 항목이 없습니다.</p>
-      )}
+      </ul>
     </div>
   );
 };
