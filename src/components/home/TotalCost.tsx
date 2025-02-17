@@ -4,4 +4,4 @@ const TotalCost = () => {
   )
 }
 
-export default TotalCost
+export default TotalCost;

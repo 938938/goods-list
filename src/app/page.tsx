@@ -1,6 +1,7 @@
-import ItemList from 'src/components/edit/ItemList';
+import ItemList from "src/components/home/ItemList";
 
 export default function Home() {
+  
   return (
     <div>
       <ItemList />
