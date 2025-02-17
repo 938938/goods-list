@@ -1,7 +1,11 @@
+import AddItem from 'src/components/edit/AddItem';
+
 const EditPage = () => {
   return (
-    <div>EditPage</div>
-  )
-}
+    <div>
+      <AddItem />
+    </div>
+  );
+};
 
-export default EditPage
+export default EditPage;
