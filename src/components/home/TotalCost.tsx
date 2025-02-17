@@ -1,7 +1,5 @@
 const TotalCost = () => {
-  return (
-    <div>TotalCost</div>
-  )
-}
+  return <div>총액 : 00000원</div>;
+};
 
 export default TotalCost;
