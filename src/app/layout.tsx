@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import './globals.css';
 import Link from 'next/link';
 import { ThemeProvider } from './../config/material-tailwind-theme-provider';
+import ReactQueryClientProvider from 'src/config/ReactQueryClientProvider';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -27,17 +28,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ko'>
-      <ThemeProvider>
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-          <div>{children}</div>
-          <div className='flex gap-1'>
-            <Link href={'/'}>HOME</Link>
-            <Link href={'/edit'}>EDIT</Link>
-          </div>
-        </body>
-      </ThemeProvider>
+      <ReactQueryClientProvider>
+        <ThemeProvider>
+          <body
+            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          >
+            <div>{children}</div>
+            <div className='flex gap-1'>
+              <Link href={'/'}>HOME</Link>
+              <Link href={'/edit'}>EDIT</Link>
+            </div>
+          </body>
+        </ThemeProvider>
+      </ReactQueryClientProvider>
     </html>
   );
 }

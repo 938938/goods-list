@@ -1,5 +1,6 @@
 'use client';
 
+import { Input } from '@material-tailwind/react';
 import { useState } from 'react';
 import { ItemType } from 'src/model/type';
 
@@ -15,7 +16,10 @@ const ItemList = () => {
         <ul>
           {list.map((item, index) => (
             <li key={index}>
-              {item.name} - {item.cost.toLocaleString()}원
+              <p>
+                {item.name} - {item.cost.toLocaleString()}원
+              </p>
+              <Input type='number' />
             </li>
           ))}
         </ul>
