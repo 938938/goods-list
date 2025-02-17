@@ -20,6 +20,8 @@ const AddItem = () => {
 
     setName('');
     setCost(undefined);
+
+    window.dispatchEvent(new Event('localStorageUpdated'));
   };
   return (
     <div>

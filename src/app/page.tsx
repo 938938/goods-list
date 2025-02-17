@@ -1,3 +1,9 @@
+import ItemList from 'src/components/edit/ItemList';
+
 export default function Home() {
-  return <div>Home</div>;
+  return (
+    <div>
+      <ItemList />
+    </div>
+  );
 }
