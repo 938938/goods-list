@@ -10,12 +10,8 @@ export const getGoodsList = () => {
   }));
 };
 
-export const addGoods = async (name: string, cost: number) => {
-  if (!name.trim()) return;
-  const id = new Date();
-  const newItem = { id, name, cost: cost || 0 };
-  const updatedList = [...list, newItem];
-  localStorage.setItem('list', JSON.stringify(updatedList));
+export const addGoods = async (data: ItemType[]) => {
+  localStorage.setItem('list', JSON.stringify(data));
   return;
 };
 

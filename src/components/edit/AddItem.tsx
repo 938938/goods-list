@@ -2,10 +2,33 @@
 
 import { Button, Input } from '@material-tailwind/react';
 import { useState } from 'react';
+import { useSetRecoilState } from 'recoil';
+import { addGoods } from 'src/actions/item-actions';
+import { listState } from 'src/recoil/listState';
 
 const AddItem = () => {
-  const [name, setName] = useState<string>('');
-  const [cost, setCost] = useState<number>(undefined);
+  const [name, setName] = useState('');
+  const [cost, setCost] = useState<number | ''>('');
+  const setGoodsList = useSetRecoilState(listState);
+
+  const onClickHandler = () => {
+    if (!name.trim()) return;
+
+    const newItem = {
+      id: new Date().toISOString(),
+      name,
+      cost: cost === '' ? 0 : cost,
+    };
+
+    setGoodsList((prev) => {
+      const newList = [...prev, newItem];
+      addGoods(newList);
+      return newList;
+    });
+
+    setName('');
+    setCost('');
+  };
 
   return (
     <div>
@@ -20,7 +43,7 @@ const AddItem = () => {
         value={cost}
         onChange={(e) => setCost(Number(e.target.value))}
       />
-      <Button>추가</Button>
+      <Button onClick={onClickHandler}>추가</Button>
     </div>
   );
 };

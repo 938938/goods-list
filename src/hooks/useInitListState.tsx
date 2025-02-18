@@ -12,7 +12,10 @@ const useInitListState = () => {
       const list = localStorage.getItem('list');
       if (list) {
         try {
-          const goodsList = JSON.parse(list);
+          const goodsList = JSON.parse(list).map((ele) => ({
+            ...ele,
+            count: 0,
+          }));
           setList(goodsList);
         } catch (error) {
           console.error(error);
