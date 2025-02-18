@@ -1,19 +1,17 @@
 'use client';
-
-import { atom } from 'recoil';
+import useInitListState from 'src/hooks/useInitListState';
 import Item from './Item';
+import { useRecoilValue } from 'recoil';
+import { listState } from 'src/recoil/listState';
 
 const ItemList = () => {
-  const listState = atom({
-    key: 'list',
-    default: [],
-  });
-  console.log(listState);
+  useInitListState();
+  const goodsList = useRecoilValue(listState);
   return (
     <div>
       <ul>
-        {/* {listState &&
-          listState.map((item) => <Item item={item} key={item.id} />)} */}
+        {goodsList &&
+          goodsList.map((item) => <Item item={item} key={item.id} />)}
       </ul>
     </div>
   );
