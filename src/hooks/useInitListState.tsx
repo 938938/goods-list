@@ -1,11 +1,11 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import { listState } from 'src/recoil/listState';
 
 const useInitListState = () => {
-  const [list, setList] = useRecoilState(listState);
+  const setList = useSetRecoilState(listState);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {

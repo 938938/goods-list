@@ -34,6 +34,7 @@ const AddItem = () => {
     <div>
       <Input
         label='상품명'
+        type='text'
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
