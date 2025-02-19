@@ -32,19 +32,23 @@ const AddItem = () => {
 
   return (
     <div>
-      <Input
-        label='상품명'
-        type='text'
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <Input
-        label='가격'
-        type='number'
-        value={cost}
-        onChange={(e) => setCost(Number(e.target.value))}
-      />
-      <Button onClick={onClickHandler}>추가</Button>
+      <div className='flex'>
+        <Input
+          label='상품명'
+          type='text'
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <Input
+          label='가격'
+          type='number'
+          value={cost}
+          onChange={(e) => setCost(Number(e.target.value))}
+        />
+      </div>
+      <Button className='w-full' onClick={onClickHandler}>
+        추가
+      </Button>
     </div>
   );
 };

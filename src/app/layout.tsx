@@ -4,6 +4,8 @@ import './globals.css';
 import Link from 'next/link';
 import { ThemeProvider } from 'src/config/material-tailwind-theme-provider';
 import { RecoilRoot } from 'src/config/recoilProvider';
+import { Button } from '@material-tailwind/react';
+import Nav from 'src/components/Nav';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -33,10 +35,9 @@ export default function RootLayout({
           <body
             className={`${geistSans.variable} ${geistMono.variable} antialiased`}
           >
-            <div>{children}</div>
-            <div className='flex gap-1'>
-              <Link href={'/'}>HOME</Link>
-              <Link href={'/edit'}>EDIT</Link>
+            <div className='w-2/3 mx-auto flex flex-col items-center py-10 gap-2'>
+              <div>{children}</div>
+              <Nav />
             </div>
           </body>
         </ThemeProvider>
