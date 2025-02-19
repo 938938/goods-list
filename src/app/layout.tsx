@@ -1,10 +1,8 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
-import Link from 'next/link';
 import { ThemeProvider } from 'src/config/material-tailwind-theme-provider';
 import { RecoilRoot } from 'src/config/recoilProvider';
-import { Button } from '@material-tailwind/react';
 import Nav from 'src/components/Nav';
 
 const geistSans = localFont({

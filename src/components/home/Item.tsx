@@ -1,7 +1,7 @@
 'use client';
 
 import { Button, Input } from '@material-tailwind/react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { ItemType } from 'src/model/type';
 import { listState } from 'src/recoil/listState';
