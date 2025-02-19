@@ -67,7 +67,7 @@ const EditTableRow = ({ item }: { item: ItemType }) => {
             className='w-full'
           />
         ) : (
-          <p>{item.cost}</p>
+          <p>{item.cost.toLocaleString()}</p>
         )}
       </td>
       <td className='p-4 border-b flex gap-2'>

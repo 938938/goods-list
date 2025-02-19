@@ -21,7 +21,7 @@ const Item = ({ item }: { item: ItemType }) => {
   return (
     <tr key={item.id}>
       <td className='p-4 border-b'>{item.name}</td>
-      <td className='p-4 border-b'>{item.cost}</td>
+      <td className='p-4 border-b'>{item.cost.toLocaleString()}</td>
       <td className='p-4 border-b flex gap-2'>
         <Button onClick={() => onCountChangeHandler(Math.max(count - 1, 0))}>
           -
