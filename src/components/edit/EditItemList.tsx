@@ -1,23 +1,44 @@
 'use client';
 
+import { Card, Typography } from '@material-tailwind/react';
 import { useRecoilValue } from 'recoil';
 import useInitListState from 'src/hooks/useInitListState';
 import { listState } from 'src/recoil/listState';
+import EditTableRow from './EditTableRow';
 
 const EditItemList = () => {
   useInitListState();
   const goodsList = useRecoilValue(listState);
+
   return (
-    <div>
-      <ul>
-        {goodsList &&
-          goodsList.map((item, index) => (
-            <li key={index}>
-              {item.name} - {item.cost.toLocaleString()}원
-            </li>
+    <Card className='h-full w-full overflow-scroll p-4'>
+      <table className='w-full min-w-max table-auto text-left'>
+        <thead>
+          <tr>
+            <th className='border-b border-blue-gray-100 bg-blue-gray-50 p-4'>
+              <Typography variant='small' className='font-normal opacity-70'>
+                상품명
+              </Typography>
+            </th>
+            <th className='border-b border-blue-gray-100 bg-blue-gray-50 p-4'>
+              <Typography variant='small' className='font-normal opacity-70'>
+                가격
+              </Typography>
+            </th>
+            <th className='border-b border-blue-gray-100 bg-blue-gray-50 p-4'>
+              <Typography variant='small' className='font-normal opacity-70'>
+                수정
+              </Typography>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {goodsList.map((item) => (
+            <EditTableRow item={item} key={item.id} />
           ))}
-      </ul>
-    </div>
+        </tbody>
+      </table>
+    </Card>
   );
 };
 

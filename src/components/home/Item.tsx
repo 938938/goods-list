@@ -7,7 +7,7 @@ import { ItemType } from 'src/model/type';
 import { listState } from 'src/recoil/listState';
 
 const Item = ({ item }: { item: ItemType }) => {
-  const [count, setCount] = useState<number>(item.count);
+  const [count, setCount] = useState<number>(item.count || 0);
   const setGoodsList = useSetRecoilState(listState);
 
   const onChangeHandler = (e) => {

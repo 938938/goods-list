@@ -3,7 +3,7 @@
 import { Button, Input } from '@material-tailwind/react';
 import { useState } from 'react';
 import { useSetRecoilState } from 'recoil';
-import { addGoods } from 'src/actions/item-actions';
+import { editGoods } from 'src/actions/item-actions';
 import { listState } from 'src/recoil/listState';
 
 const AddItem = () => {
@@ -22,7 +22,7 @@ const AddItem = () => {
 
     setGoodsList((prev) => {
       const newList = [...prev, newItem];
-      addGoods(newList);
+      editGoods(newList);
       return newList;
     });
 
