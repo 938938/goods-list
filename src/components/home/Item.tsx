@@ -22,12 +22,13 @@ const Item = ({ item }: { item: ItemType }) => {
   };
 
   return (
-    <li>
-      <p>
-        {item.name} - {item.cost.toLocaleString()}원 / {item.count} 개
-      </p>
-      <Input type='number' value={count} onChange={onChangeHandler} min={0} />
-    </li>
+    <tr key={item.id}>
+      <td className='p-4 border-b'>{item.name}</td>
+      <td className='p-4 border-b'>{item.cost}</td>
+      <td className='p-4 border-b flex gap-2'>
+        <Input type='number' value={count} onChange={onChangeHandler} min={0} />
+      </td>
+    </tr>
   );
 };
 
