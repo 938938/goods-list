@@ -18,7 +18,7 @@ const ListResetBtn = () => {
   return (
     <>
       <Button onClick={() => setModalOpen(true)} className='w-full'>
-        초기화
+        목록 모두 삭제
       </Button>
       <DelModal
         open={modalOpen}

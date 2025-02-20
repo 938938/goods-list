@@ -11,7 +11,7 @@ const CountResetBtn = () => {
   };
   return (
     <Button onClick={onCountResetHandler} className='w-full'>
-      초기화
+      수량 초기화
     </Button>
   );
 };
