@@ -4,16 +4,16 @@ import { Button } from '@material-tailwind/react';
 import { useSetRecoilState } from 'recoil';
 import { listState } from 'src/recoil/listState';
 
-const ResetBtn = () => {
+const CountResetBtn = () => {
   const setGoodsList = useSetRecoilState(listState);
-  const onResetHandler = () => {
+  const onCountResetHandler = () => {
     setGoodsList((prev) => prev.map((ele) => ({ ...ele, count: 0 })));
   };
   return (
-    <Button onClick={onResetHandler} className='w-full'>
+    <Button onClick={onCountResetHandler} className='w-full'>
       초기화
     </Button>
   );
 };
 
-export default ResetBtn;
+export default CountResetBtn;
