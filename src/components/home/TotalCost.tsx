@@ -14,10 +14,11 @@ const TotalCost = () => {
 
   return (
     <div className='flex py-3 justify-center flex-col items-center'>
-      <div className='flex gap-3'>
-        {checkedItem.map((item) => (
+      <div className='flex gap-1'>
+        {checkedItem.map((item, idx) => (
           <p key={item.name}>
-            {item.name} x {item.count}개
+            {item.name}({item.cost}원) x {item.count}개{' '}
+            {idx !== checkedItem.length - 1 && '+'}
           </p>
         ))}
       </div>
