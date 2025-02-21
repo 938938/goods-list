@@ -10,7 +10,6 @@ const TotalCost = () => {
     return item.count > 0 ? sum + item.cost * item.count : sum;
   }, 0);
   const checkedItem = goodsList.filter((item) => item.count !== 0);
-  console.log(checkedItem);
 
   return (
     <div className='flex py-3 justify-center flex-col items-center'>
