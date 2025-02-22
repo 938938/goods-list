@@ -4,7 +4,7 @@ import ListResetBtn from 'src/components/edit/ListResetBtn';
 
 const EditPage = () => {
   return (
-    <div>
+    <div className='flex gap-3 flex-col'>
       <ListResetBtn />
       <EditItemList />
       <AddItem />

@@ -29,12 +29,24 @@ export default function RootLayout({
   return (
     <html lang='ko'>
       <RecoilRoot>
-        <ThemeProvider>
+        <ThemeProvider
+          value={{
+            input: {
+              styles: {
+                base: {
+                  container: {
+                    minWidth: '',
+                  },
+                },
+              },
+            },
+          }}
+        >
           <body
             className={`${geistSans.variable} ${geistMono.variable} antialiased`}
           >
             <div className='w-2/3 mx-auto flex flex-col items-center py-10 gap-2'>
-              <div>{children}</div>
+              <div className='w-screen'>{children}</div>
               <Nav />
             </div>
           </body>
